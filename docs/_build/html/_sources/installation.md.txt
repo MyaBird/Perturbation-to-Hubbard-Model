@@ -1,18 +1,18 @@
 # Installation
 
-## Stable release
+## Package dependancies
 
-To install Perturbation to Hubbard Model, run this command in your terminal:
-
+You will need an environment with the following packages:
+* Python 3.14
+* NumPy
+* Matplotlib
+* Pennylane
+Once you have these packages installed, you can install Perturbation-to-Hubbard-Model in the same
+environment using
 ```sh
-uv add Perturbation-to-Hubbard-Model
+pip install -e .
 ```
-
-Or if you prefer to use `pip`:
-
-```sh
-pip install Perturbation-to-Hubbard-Model
-```
+from the top-level Perturbation-to-Hubbard-Model/ directory.
 
 ## From source
 
