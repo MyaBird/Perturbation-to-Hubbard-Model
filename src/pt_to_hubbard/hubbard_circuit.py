@@ -36,9 +36,6 @@ class HubbardCircuit:
 
     def hub_circuit(self):
 
-        #Create device for circuit
-        dev = self.circuit.create_device('default_qubit')
-
         #Initialize qubits to ground state
         self.circuit.initial_state(self.config)
 
@@ -47,5 +44,13 @@ class HubbardCircuit:
         self.modules.perturbation()
         qml.adjoint(self.modules.u_disentangle)()
         self.modules.u_inverse_energy()
+
+        #Check readout qubit for success
+        u_e_readout = qml.expval(qml.PauliZ(wires="q2''"))
+
+        #Measure system qubits
+        state_output = []
+        for idx in range(self.N):
+            state_output.append(qml.expval(qml.PauliZ(wires=self.qubits[idx])))
         
-        return qml.expval(qml.PauliZ(wires="q2''")), qml.expval(qml.PauliZ(wires="q1''"))
+        return u_e_readout, state_output
