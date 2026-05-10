@@ -1,5 +1,6 @@
 from circuit_modules import CircuitModules
 from initialize_circuit import InitializeCircuit
+from calculate_thetas import CalculateThetas
 import numpy as np
 import pennylane as qml
 
@@ -8,7 +9,7 @@ class HubbardCircuit:
     '''Class to construct circuit used to estimate 1st order correction to Hubbard model
     '''
 
-    def __init__(self, config, N, M, pert_coeff, transfer, interaction, theta, phase, theta_gs, theta_neg1, theta_0, theta_1, theta_2, theta_h):
+    def __init__(self, config, N, M, pert_coeff, transfer, interaction, theta, phase, c, e_gs, e_neg1, e_0, e_1, e_2, e_h):
         '''Construction
 
         Parameters:
@@ -22,29 +23,11 @@ class HubbardCircuit:
         pert_coeff  : float
             Defines the coefficient lambda by which to apply the perturbation
 
-        timestep    : float
-            Defines t parameter used in calculating alpha
+        transfer    : float
+            Defines coefficient of transfer integral used in calculating alpha
 
-        u_param     : float
+        interaction     : float
             Defines U parameter used in calculating alpha
-
-        theta_gs    : float
-            Parameter determined by E_gs, where .. math:: \\sin(\\frac{\\theta_2 + \\theta_0 + \\theta_{gs}}{2} = 0
-
-        theta_neg1  : float
-            Parameter determined by E_-1, where .. math:: \\sin(\\frac{\\theta_{-1} + \\theta_0}{2} = \\frac{C}{E_{gs} - E_{-1}}
-
-        theta_0     : float
-            Parameter determined by E_0, where .. math:: \\sin(\\frac{theta_0}{2}) = \\frac{C}{E_{gs} - E_0}
-
-        theta_1     : float
-            Parameter determined by E_1, where .. math:: \\sin(\\frac{\\theta_1 + \\theta_0}{2} = \\frac{C}{E_{gs} - E_1}
-
-        theta_2     : float
-            Parameter determined by E_2, where .. math:: \\sin(\\frac{\\theta_2 + \\theta_0}{2}) = \\frac{C}{E_{gs} - E_2}
-
-        theta_h     : float
-            Parameter determined by E_h, where .. math:: \\sin(\\frac{\\theta_neg1 + \\theta_0 + \\theta_h}{2} = \\frac{C}{E_{gs} - E_{h}}
         
         theta   : float
             Rotation parameter used in the multicontrolled R_6_9 gate
@@ -52,10 +35,32 @@ class HubbardCircuit:
         phase   : float
             Phase shift implemented by the single-qubit phase gate in the QFT circuit
 
+        c : float
+            Normalization parameter
+        
+        e_gs : float
+            Ground state energy
+
+        e_neg1 : float
+            Energy of excited state e_neg1
+
+        e_0 : float
+            Energy of excited state e_0
+
+        e_1 : float
+            Energy of excited state e_1
+
+        e_2 : float
+            Energy of excited state e_2
+
+        e_h : float
+            Highest excited state energy
+
         '''
 
-        self.modules = CircuitModules(N, M, pert_coeff, transfer, interaction, theta, phase, theta_gs, theta_neg1, theta_0, theta_1, theta_2, theta_h)
         self.circuit = InitializeCircuit(N, M)
+        
+        thetas = CalculateThetas(c, e_gs, e_neg1, e_0, e_1, e_2, e_h)
 
         #Parameters of circuit
         self.qubits = self.modules.qubits
@@ -68,18 +73,22 @@ class HubbardCircuit:
         self.u = interaction
 
         #Angles of rotation
+        thetas = CalculateThetas(c, e_gs, e_neg1, e_0, e_1, e_2, e_h)
         self.theta = theta
         self.alpha = self.modules.alpha
         self.phase = phase
-        self.theta_gs = theta_gs
-        self.theta_neg1 = theta_neg1
-        self.theta_0 = theta_0
-        self.theta_1 = theta_1
-        self.theta_2 = theta_2
-        self.theta_h = theta_h
+        self.theta_gs = thetas.theta_gs
+        self.theta_neg1 = thetas.theta_neg1
+        self.theta_0 = thetas.theta_0
+        self.theta_1 = thetas.theta_1
+        self.theta_2 = thetas.theta_2
+        self.theta_h = thetas.theta_h
 
         #Initial configuration
         self.config = config
+
+        #Modules for circuit
+        self.modules = CircuitModules(N, M, pert_coeff, transfer, interaction, theta, phase, self.theta_gs, self.theta_neg1, self.theta_0, self.theta_1, self.theta_2, self.theta_h)
 
     def hub_circuit(self):
         '''Construct Hubbard circuit using gates created in the circuit_modules class
