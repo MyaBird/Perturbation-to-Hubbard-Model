@@ -1,8 +1,8 @@
-"""Tests for `pt_to_hubbard` package."""
+"""Tests for `perturbation_to_hubbard_model` package."""
 
-import pt_to_hubbard
+import perturbation_to_hubbard_model
 
 
 def test_import():
     """Verify the package can be imported."""
-    assert pt_to_hubbard
+    assert perturbation_to_hubbard_model

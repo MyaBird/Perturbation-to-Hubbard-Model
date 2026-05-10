@@ -20,4 +20,4 @@ def test_initialize_circuit():
         return qml.expval(qml.PauliZ("q1"))
 
     #Test initialize qubit circuit
-    assert(qml.equal(circuit, test_config()))
+    assert(qml.equal(circuit_state(), test_config()))
