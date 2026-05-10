@@ -38,6 +38,30 @@
 </pre></div>
 </div>
 </section>
+<section id="define-a-blank-quantum-circuit-with-8-qubits">
+<h1>Define a blank quantum circuit with 8 qubits<a class="headerlink" href="#define-a-blank-quantum-circuit-with-8-qubits" title="Link to this heading">¶</a></h1>
+<p>blank_circuit = pt_to_hubbard.InitializeCircuit(4, 2)</p>
+</section>
+<section id="create-basic-gates-to-construct-your-circuit">
+<h1>Create basic gates to construct your circuit<a class="headerlink" href="#create-basic-gates-to-construct-your-circuit" title="Link to this heading">¶</a></h1>
+<p>gates = pt_to_hubbard.ConstructionGates(4, 2, 0.1, 1, 1)</p>
+</section>
+<section id="create-multicontrolled-rotation-gates-to-construct-circuit">
+<h1>Create multicontrolled rotation gates to construct circuit<a class="headerlink" href="#create-multicontrolled-rotation-gates-to-construct-circuit" title="Link to this heading">¶</a></h1>
+<p>multi_r = pt_to_hubbard.RotationGates(4, 2, 0.1, 1, 1)</p>
+</section>
+<section id="create-modules-for-each-circuit-transformation">
+<h1>Create modules for each circuit transformation<a class="headerlink" href="#create-modules-for-each-circuit-transformation" title="Link to this heading">¶</a></h1>
+<p>modules = pt_to_hubbard.CircuitModules(4, 2, 0.1, 1, 1, 0.785, 1, -1.56, -1, 0, 1, 2, 2.56)</p>
+</section>
+<section id="calculate-rotation-angles-in-u-e-given-the-energy-levels-of-the-unperturbed-hamiltonian">
+<h1>Calculate rotation angles in U_e given the energy levels of the unperturbed Hamiltonian<a class="headerlink" href="#calculate-rotation-angles-in-u-e-given-the-energy-levels-of-the-unperturbed-hamiltonian" title="Link to this heading">¶</a></h1>
+<p>thetas = pt_to_hubbard.CalculateThetas(1, -1.56, -1, 0, 1, 2, 2.56)</p>
+</section>
+<section id="construct-circuit">
+<h1>Construct circuit<a class="headerlink" href="#construct-circuit" title="Link to this heading">¶</a></h1>
+<p>circuit = pt_to_hubbard.HubbardCircuit([0,0,0,0], 4, 2, 0.1, 1, 1, 0.785, 1, 1, -1.56, -1, 0, 1, 2, 2.56)</p>
+</section>
 
 
           </div>
