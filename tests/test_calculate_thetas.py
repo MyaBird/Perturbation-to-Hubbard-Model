@@ -1,4 +1,4 @@
-import pt_to_hubbard
+import perturbation_to_hubbard_model
 import numpy as np
 import pytest
 

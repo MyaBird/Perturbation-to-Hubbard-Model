@@ -1,11 +1,11 @@
-import pt_to_hubbard
+import perturbation_to_hubbard_model
 import numpy as np
 import pytest
 import pennylane as qml
 
 def test_initialize_circuit():
 
-    circuit = pt_to_hubbard.InitializeCircuit(4,2)
+    circuit = perturbation_to_hubbard_model.InitializeCircuit(4,2)
     test_qubits = ["q1", "q2", "q3", "q4", "q1'", "q2'", "q1''", "q2''"]
     #Test that circuit has correct qubit configuration
     assert((circuit.qubits == test_qubits).all())
