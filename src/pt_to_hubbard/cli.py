@@ -3,7 +3,7 @@
 import typer
 from rich.console import Console
 
-from pt_to_hubbard import utils
+import utils
 
 app = typer.Typer()
 console = Console()
