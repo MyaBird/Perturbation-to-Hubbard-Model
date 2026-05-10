@@ -93,7 +93,7 @@ class CircuitModules:
 
             .. math::
             U_{dis}^{\\dagger}H^{(0)}U_{dis}=\\sum_{n}E_n\\ket{n}\\bra{n}
-            
+
         '''
 
         qml.PauliX(wires=self.qubits[0])
@@ -110,8 +110,7 @@ class CircuitModules:
         self.gates.perturbation_check()
 
     def u_inverse_energy(self):
-        '''Constructs gate used to calculate inverse of 1st order energy corrections to the unperturbed Hubbard Hamiltonian
-            
+        '''Constructs gate used to calculate inverse of 1st order energy corrections to the unperturbed Hubbard Hamiltonian 
         '''
 
         self.rot.cr_0(self.theta_0)

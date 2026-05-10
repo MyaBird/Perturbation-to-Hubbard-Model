@@ -15,13 +15,15 @@ class InitializeCircuit:
         '''Constructor
 
         Parameters:
-        --------------------------
+        -----------
         N :int
             Describes number of qubits representative a system of size 2^N
 
         M :int
             Number of ancillary qubits required to implement the U_e gate
 
+        Notes:
+        ------
         This function creates two additional qubits for readout purposes, required to test the success of the perturbation gates and U_e gates.
         These qubits are denoted q1'' and q2''
         '''

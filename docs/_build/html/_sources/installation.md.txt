@@ -7,6 +7,8 @@ You will need an environment with the following packages:
 * NumPy
 * Matplotlib
 * Pennylane
+
+## Installation instructions
 Once you have these packages installed, you can install Perturbation-to-Hubbard-Model in the same
 environment using
 ```sh

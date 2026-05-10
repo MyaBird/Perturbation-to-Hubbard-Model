@@ -5,7 +5,54 @@ import pennylane as qml
 
 class HubbardCircuit:
 
+    '''Class to construct circuit used to estimate 1st order correction to Hubbard model
+    '''
+
     def __init__(self, config, N, M, pert_coeff, transfer, interaction, theta, phase, theta_gs, theta_neg1, theta_0, theta_1, theta_2, theta_h):
+        '''Construction
+
+        Parameters:
+        -----------------------------
+        N   : int
+            Describes number of qubits representative a system of size 2^N
+
+        M   : int
+            Number of ancillary qubits required to implement the U_e gate
+
+        pert_coeff  : float
+            Defines the coefficient lambda by which to apply the perturbation
+
+        timestep    : float
+            Defines t parameter used in calculating alpha
+
+        u_param     : float
+            Defines U parameter used in calculating alpha
+
+        theta_gs    : float
+            Parameter determined by E_gs, where .. math:: \\sin(\\frac{\\theta_2 + \\theta_0 + \\theta_{gs}}{2} = 0
+
+        theta_neg1  : float
+            Parameter determined by E_-1, where .. math:: \\sin(\\frac{\\theta_{-1} + \\theta_0}{2} = \\frac{C}{E_{gs} - E_{-1}}
+
+        theta_0     : float
+            Parameter determined by E_0, where .. math:: \\sin(\\frac{theta_0}{2}) = \\frac{C}{E_{gs} - E_0}
+
+        theta_1     : float
+            Parameter determined by E_1, where .. math:: \\sin(\\frac{\\theta_1 + \\theta_0}{2} = \\frac{C}{E_{gs} - E_1}
+
+        theta_2     : float
+            Parameter determined by E_2, where .. math:: \\sin(\\frac{\\theta_2 + \\theta_0}{2}) = \\frac{C}{E_{gs} - E_2}
+
+        theta_h     : float
+            Parameter determined by E_h, where .. math:: \\sin(\\frac{\\theta_neg1 + \\theta_0 + \\theta_h}{2} = \\frac{C}{E_{gs} - E_{h}}
+        
+        theta   : float
+            Rotation parameter used in the multicontrolled R_6_9 gate
+
+        phase   : float
+            Phase shift implemented by the single-qubit phase gate in the QFT circuit
+
+        '''
 
         self.modules = CircuitModules(N, M, pert_coeff, transfer, interaction, theta, phase, theta_gs, theta_neg1, theta_0, theta_1, theta_2, theta_h)
         self.circuit = InitializeCircuit(N, M)
@@ -35,6 +82,8 @@ class HubbardCircuit:
         self.config = config
 
     def hub_circuit(self):
+        '''Construct Hubbard circuit using gates created in the circuit_modules class
+        '''
 
         #Initialize qubits to ground state
         self.circuit.initial_state(self.config)
