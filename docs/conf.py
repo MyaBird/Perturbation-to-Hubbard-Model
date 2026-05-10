@@ -17,6 +17,8 @@ release = '0.1.0'
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
+sys.path.insert(0, os.path.abspath('../src'))
+
 extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.autosummary',
@@ -28,7 +30,7 @@ autodoc_default_options = {
     'undoc-members': True,
     'show-inheritance': True,
 }
-autodoc_mock_imports = ['numpy']
+autodoc_mock_imports = ['numpy', 'math', 'matplotlib', 'pennylane']
 
 source_suffix = {
     '.rst': 'restructuredtext',

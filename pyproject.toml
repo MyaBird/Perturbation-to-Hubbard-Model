@@ -22,8 +22,12 @@ license = {text = "MIT"}
 dependencies = [
   "typer",
   "rich",
+  "numpy",
+  "math",
+  "matplotlib",
+  "pennylane",
 ]
-requires-python = ">= 3.12"
+requires-python = ">= 3.14"
 
 [dependency-groups]
 dev = [
@@ -87,7 +91,7 @@ exclude_also = [
     "if typing.TYPE_CHECKING:",
     "@overload",
     "@typing.overload",
-    "class .*\\bProtocol\\):",
+    "class .*\\bProtocol\\:",
     "@(abc\\.)?abstractmethod",
     "raise NotImplementedError",
     "\\.\\.\\.",
@@ -99,3 +103,9 @@ testpaths = ["tests"]
 [tool.uv]
 package = true
 default-groups = ["dev"]
+
+[tool.hatch.build.targets.wheel]
+package = ["src/pt_to_hubbard"]
+
+[tool.hatch.metadata]
+allow-direct-references = true
