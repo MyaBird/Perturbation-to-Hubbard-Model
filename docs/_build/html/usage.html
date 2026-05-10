@@ -39,39 +39,27 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pt_to_hubbard</span>
 </pre></div>
 </div>
-</section>
-<section id="define-a-blank-quantum-circuit-with-8-qubits">
-<h1>Define a blank quantum circuit with 8 qubits<a class="headerlink" href="#define-a-blank-quantum-circuit-with-8-qubits" title="Link to this heading">¶</a></h1>
+<p>To define a blank quantum circuit with 8 qubits:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">blank_circuit</span> <span class="o">=</span> <span class="n">pt_to_hubbard</span><span class="o">.</span><span class="n">InitializeCircuit</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
-</section>
-<section id="create-basic-gates-to-construct-your-circuit">
-<h1>Create basic gates to construct your circuit<a class="headerlink" href="#create-basic-gates-to-construct-your-circuit" title="Link to this heading">¶</a></h1>
+<p>To create the basic gates used to construct your circuit:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">gates</span> <span class="o">=</span> <span class="n">pt_to_hubbard</span><span class="o">.</span><span class="n">ConstructionGates</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
-</section>
-<section id="create-multicontrolled-rotation-gates-to-construct-circuit">
-<h1>Create multicontrolled rotation gates to construct circuit<a class="headerlink" href="#create-multicontrolled-rotation-gates-to-construct-circuit" title="Link to this heading">¶</a></h1>
+<p>To create multicontrolled rotation gates to construct your circuit:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">multi_r</span> <span class="o">=</span> <span class="n">pt_to_hubbard</span><span class="o">.</span><span class="n">RotationGates</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
-</section>
-<section id="create-modules-for-each-circuit-transformation">
-<h1>Create modules for each circuit transformation<a class="headerlink" href="#create-modules-for-each-circuit-transformation" title="Link to this heading">¶</a></h1>
+<p>To create modules for each circuit transformation:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">modules</span> <span class="o">=</span> <span class="n">pt_to_hubbard</span><span class="o">.</span><span class="n">CircuitModules</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.785</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.56</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">2.56</span><span class="p">)</span>
 </pre></div>
 </div>
-</section>
-<section id="calculate-rotation-angles-in-u-e-given-the-energy-levels-of-the-unperturbed-hamiltonian">
-<h1>Calculate rotation angles in U_e given the energy levels of the unperturbed Hamiltonian<a class="headerlink" href="#calculate-rotation-angles-in-u-e-given-the-energy-levels-of-the-unperturbed-hamiltonian" title="Link to this heading">¶</a></h1>
+<p>To calculate rotation angles in U_e given the energy levels of the unperturbed Hamiltonian:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">thetas</span> <span class="o">=</span> <span class="n">pt_to_hubbard</span><span class="o">.</span><span class="n">CalculateThetas</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.56</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">2.56</span><span class="p">)</span>
 </pre></div>
 </div>
-</section>
-<section id="construct-circuit">
-<h1>Construct circuit<a class="headerlink" href="#construct-circuit" title="Link to this heading">¶</a></h1>
+<p>To construct the whole circuit:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">circuit</span> <span class="o">=</span> <span class="n">pt_to_hubbard</span><span class="o">.</span><span class="n">HubbardCircuit</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.785</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.56</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">2.56</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -107,12 +95,6 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Usage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#define-a-blank-quantum-circuit-with-8-qubits">Define a blank quantum circuit with 8 qubits</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#create-basic-gates-to-construct-your-circuit">Create basic gates to construct your circuit</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#create-multicontrolled-rotation-gates-to-construct-circuit">Create multicontrolled rotation gates to construct circuit</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#create-modules-for-each-circuit-transformation">Create modules for each circuit transformation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#calculate-rotation-angles-in-u-e-given-the-energy-levels-of-the-unperturbed-hamiltonian">Calculate rotation angles in U_e given the energy levels of the unperturbed Hamiltonian</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#construct-circuit">Construct circuit</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api.html">API Reference</a></li>
 </ul>
 

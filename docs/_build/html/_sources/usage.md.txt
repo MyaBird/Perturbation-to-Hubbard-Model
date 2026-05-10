@@ -6,32 +6,32 @@ To use Perturbation to Hubbard Model in a project:
 import pt_to_hubbard
 ```
 
-# Define a blank quantum circuit with 8 qubits 
+To define a blank quantum circuit with 8 qubits:
 ```python
 blank_circuit = pt_to_hubbard.InitializeCircuit(4, 2)
 ```
 
-# Create basic gates to construct your circuit
+To create the basic gates used to construct your circuit:
 ```python
 gates = pt_to_hubbard.ConstructionGates(4, 2, 0.1, 1, 1)
 ```
 
-# Create multicontrolled rotation gates to construct circuit
+To create multicontrolled rotation gates to construct your circuit:
 ```python
 multi_r = pt_to_hubbard.RotationGates(4, 2, 0.1, 1, 1)
 ```
 
-# Create modules for each circuit transformation
+To create modules for each circuit transformation:
 ```python
 modules = pt_to_hubbard.CircuitModules(4, 2, 0.1, 1, 1, 0.785, 1, -1.56, -1, 0, 1, 2, 2.56)
 ```
 
-# Calculate rotation angles in U_e given the energy levels of the unperturbed Hamiltonian
+To calculate rotation angles in U_e given the energy levels of the unperturbed Hamiltonian:
 ```python
 thetas = pt_to_hubbard.CalculateThetas(1, -1.56, -1, 0, 1, 2, 2.56)
 ```
 
-# Construct circuit
+To construct the whole circuit:
 ```python
 circuit = pt_to_hubbard.HubbardCircuit([0,0,0,0], 4, 2, 0.1, 1, 1, 0.785, 1, 1, -1.56, -1, 0, 1, 2, 2.56)
 ```
