@@ -1,9 +1,9 @@
 # API Reference
 
-::: pt_to_hubbard
+::: perturbation_to_hubbard_model
 
 ```{eval-rst}
-.. automodule:: pt_to_hubbard
+.. automodule:: perturbation_to_hubbard_model
 :members:
 :imported-members:
 :undoc-members:

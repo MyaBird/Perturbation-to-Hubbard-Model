@@ -2,7 +2,7 @@ import pennylane as qml
 import numpy as np
 import math
 
-from initialize_circuit import InitializeCircuit
+from .initialize_circuit import InitializeCircuit
 
 class ControlledRotations:
 

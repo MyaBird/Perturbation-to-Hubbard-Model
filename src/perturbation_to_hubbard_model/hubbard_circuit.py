@@ -1,6 +1,6 @@
-from circuit_modules import CircuitModules
-from initialize_circuit import InitializeCircuit
-from calculate_thetas import CalculateThetas
+from .circuit_modules import CircuitModules
+from .initialize_circuit import InitializeCircuit
+from .calculate_thetas import CalculateThetas
 import numpy as np
 import pennylane as qml
 

@@ -1,5 +1,5 @@
 [build-system]
-requires = ["hatchling"]
+requires = ["hatchling>=1.19.0"]
 build-backend = "hatchling.build"
 
 [project]
@@ -23,7 +23,6 @@ dependencies = [
   "typer",
   "rich",
   "numpy",
-  "math",
   "matplotlib",
   "pennylane",
 ]
@@ -57,7 +56,7 @@ documentation = "https://MyaBird.github.io/Perturbation-to-Hubbard-Model/"
 homepage = "https://github.com/MyaBird/Perturbation-to-Hubbard-Model"
 
 [project.scripts]
-pt_to_hubbard = "pt_to_hubbard.cli:app"
+perturbation_to_hubbard_model = "perturbation_to_hubbard_model.cli:app"
 
 [tool.ty]
 # All rules are enabled as "error" by default; no need to specify unless overriding.
@@ -105,7 +104,7 @@ package = true
 default-groups = ["dev"]
 
 [tool.hatch.build.targets.wheel]
-package = ["src/pt_to_hubbard"]
+package = ["src/perturbation_to_hubbard_model"]
 
 [tool.hatch.metadata]
 allow-direct-references = true

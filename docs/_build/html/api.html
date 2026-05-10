@@ -12,6 +12,7 @@
     <script src="_static/documentation_options.js?v=01f34227"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="prev" title="Usage" href="usage.html" />
@@ -34,7 +35,251 @@
             
   <section id="api-reference">
 <h1>API Reference<a class="headerlink" href="#api-reference" title="Link to this heading">¶</a></h1>
-<p>::: pt_to_hubbard</p>
+<p>::: perturbation_to_hubbard_model</p>
+<p id="module-perturbation_to_hubbard_model">Top-level package for Perturbation to Hubbard Model.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="perturbation_to_hubbard_model.CalculateThetas">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">perturbation_to_hubbard_model.</span></span><span class="sig-name descname"><span class="pre">CalculateThetas</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_gs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_neg1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_h</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#perturbation_to_hubbard_model.CalculateThetas" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class to calculate angles of rotation for multicontrolled rotation gates constructing U_e</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="perturbation_to_hubbard_model.CircuitModules">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">perturbation_to_hubbard_model.</span></span><span class="sig-name descname"><span class="pre">CircuitModules</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">N</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">M</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pert_coeff</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timestep</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">u_param</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phase</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theta_gs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theta_neg1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theta_0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theta_1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theta_2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theta_h</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#perturbation_to_hubbard_model.CircuitModules" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class to construct the major modules needed to create the circuit</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="perturbation_to_hubbard_model.CircuitModules.perturbation">
+<span class="sig-name descname"><span class="pre">perturbation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#perturbation_to_hubbard_model.CircuitModules.perturbation" title="Link to this definition">¶</a></dt>
+<dd><p>Applies a dipole-dipole interaction to the unperturbed Hubbard Hamiltonian</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="perturbation_to_hubbard_model.CircuitModules.u_disentangle">
+<span class="sig-name descname"><span class="pre">u_disentangle</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#perturbation_to_hubbard_model.CircuitModules.u_disentangle" title="Link to this definition">¶</a></dt>
+<dd><p>Gate which transforms the system qubits from the computational basis into the energy eigenstates of the unperturbed Hamiltonian.</p>
+<div class="math notranslate nohighlight">
+\[\]</div>
+<p>U_{dis}^{dagger}H^{(0)}U_{dis}=sum_{n}E_nket{n}bra{n}</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="perturbation_to_hubbard_model.CircuitModules.u_inverse_energy">
+<span class="sig-name descname"><span class="pre">u_inverse_energy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#perturbation_to_hubbard_model.CircuitModules.u_inverse_energy" title="Link to this definition">¶</a></dt>
+<dd><p>Constructs gate used to calculate inverse of 1st order energy corrections to the unperturbed Hubbard Hamiltonian</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="perturbation_to_hubbard_model.ConstructionGates">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">perturbation_to_hubbard_model.</span></span><span class="sig-name descname"><span class="pre">ConstructionGates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">N</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">M</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pert_coeff</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timestep</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">u_param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#perturbation_to_hubbard_model.ConstructionGates" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class to define all gates necessary for constructing circuit to estimate 1st order corrections to Hubbard Model</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="perturbation_to_hubbard_model.ConstructionGates.exp_perturbation">
+<span class="sig-name descname"><span class="pre">exp_perturbation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#perturbation_to_hubbard_model.ConstructionGates.exp_perturbation" title="Link to this definition">¶</a></dt>
+<dd><p>Applies the exponential of the desired perturbation to the system qubits</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="perturbation_to_hubbard_model.ConstructionGates.multi_R_5_10">
+<span class="sig-name descname"><span class="pre">multi_R_5_10</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#perturbation_to_hubbard_model.ConstructionGates.multi_R_5_10" title="Link to this definition">¶</a></dt>
+<dd><p>Define a multi-controlled RY gate, used in the composition of the U_dis gate.</p>
+<section id="parameters">
+<h2>Parameters:<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h2>
+<dl class="simple">
+<dt>alpha :float</dt><dd><p>Defines the angle passed through the RY gate</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="perturbation_to_hubbard_model.ConstructionGates.multi_R_6_9">
+<span class="sig-name descname"><span class="pre">multi_R_6_9</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#perturbation_to_hubbard_model.ConstructionGates.multi_R_6_9" title="Link to this definition">¶</a></dt>
+<dd><p>Define a multi-controlled RY gate, used in the composition of the U_dis gate.</p>
+<section id="id1">
+<h2>Parameters:<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
+<dl class="simple">
+<dt>theta :float</dt><dd><p>Defines the angle passed through the RY gate</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="perturbation_to_hubbard_model.ConstructionGates.perturbation_check">
+<span class="sig-name descname"><span class="pre">perturbation_check</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#perturbation_to_hubbard_model.ConstructionGates.perturbation_check" title="Link to this definition">¶</a></dt>
+<dd><p>Undo the perturbation based on result of readout qubit</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="perturbation_to_hubbard_model.ConstructionGates.qft">
+<span class="sig-name descname"><span class="pre">qft</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">phase</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#perturbation_to_hubbard_model.ConstructionGates.qft" title="Link to this definition">¶</a></dt>
+<dd><p>Define a Quantum Fourier Transform gate that operates on qubits q1 and q2, and q3 and q4</p>
+<section id="id2">
+<h2>Parameters:<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<dl class="simple">
+<dt>phase :float</dt><dd><p>Parametrizes shift in phase</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="perturbation_to_hubbard_model.ControlledRotations">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">perturbation_to_hubbard_model.</span></span><span class="sig-name descname"><span class="pre">ControlledRotations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">N</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">M</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pert_coeff</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timestep</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">u_param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#perturbation_to_hubbard_model.ControlledRotations" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Define a series of multi-controlled RY gates used in the construction of U_e. 
+The parameters for each rotation (theta_n) are determined by the corresponding energy levels of the unperturbed Hamiltonian.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="perturbation_to_hubbard_model.ControlledRotations.cr_0">
+<span class="sig-name descname"><span class="pre">cr_0</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta_0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#perturbation_to_hubbard_model.ControlledRotations.cr_0" title="Link to this definition">¶</a></dt>
+<dd><p>Sets energy state associated with E_0 as the default value on q1’’</p>
+<section id="id3">
+<h2>Parameters:<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
+<dl class="simple">
+<dt>theta_0<span class="classifier">int</span></dt><dd><p>Parameter determined by E_0, where .. math:: sin(frac{theta_0}{2}) = frac{C}{E_{gs} - E_0}</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="perturbation_to_hubbard_model.ControlledRotations.cr_1">
+<span class="sig-name descname"><span class="pre">cr_1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta_2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#perturbation_to_hubbard_model.ControlledRotations.cr_1" title="Link to this definition">¶</a></dt>
+<dd><p>Correction term to account for E_2</p>
+<section id="id4">
+<h2>Parameters:<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h2>
+<dl class="simple">
+<dt>theta_2<span class="classifier">int</span></dt><dd><p>Parameter determined by E_2, where .. math:: sin(frac{theta_2 + theta_0}{2}) = frac{C}{E_{gs} - E_2}</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="perturbation_to_hubbard_model.ControlledRotations.cr_2">
+<span class="sig-name descname"><span class="pre">cr_2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta_gs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#perturbation_to_hubbard_model.ControlledRotations.cr_2" title="Link to this definition">¶</a></dt>
+<dd><p>Correction term to account for E_gs (ground state energy)</p>
+<section id="id5">
+<h2>Parameters:<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h2>
+<dl class="simple">
+<dt>theta_gs :int</dt><dd><p>Parameter determined by E_gs, where .. math:: sin(frac{theta_2 + theta_0 + theta_{gs}}{2} = 0</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="perturbation_to_hubbard_model.ControlledRotations.cr_3">
+<span class="sig-name descname"><span class="pre">cr_3</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta_neg1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#perturbation_to_hubbard_model.ControlledRotations.cr_3" title="Link to this definition">¶</a></dt>
+<dd><p>1st correction term to account for <a href="#id1"><span class="problematic" id="id2">E_</span></a>-1</p>
+<section id="id6">
+<h2>Parameters:<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h2>
+<dl class="simple">
+<dt>theta_neg1 :int</dt><dd><p>Parameter determined by <a href="#id3"><span class="problematic" id="id4">E_</span></a>-1, where .. math:: sin(frac{theta_{-1} + theta_0}{2} = frac{C}{E_{gs} - E_{-1}}</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="perturbation_to_hubbard_model.ControlledRotations.cr_4">
+<span class="sig-name descname"><span class="pre">cr_4</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta_neg1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#perturbation_to_hubbard_model.ControlledRotations.cr_4" title="Link to this definition">¶</a></dt>
+<dd><p>2nd correction term to account for <a href="#id5"><span class="problematic" id="id6">E_</span></a>-1</p>
+<section id="id7">
+<h2>Parameters:<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h2>
+<dl class="simple">
+<dt>theta_neg1 :int</dt><dd><p>Parameter determined by <a href="#id7"><span class="problematic" id="id8">E_</span></a>-1, where .. math:: sin(frac{theta_{-1} + theta_0}{2} = frac{C}{E_{gs} - E_{-1}}</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="perturbation_to_hubbard_model.ControlledRotations.cr_5">
+<span class="sig-name descname"><span class="pre">cr_5</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta_h</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#perturbation_to_hubbard_model.ControlledRotations.cr_5" title="Link to this definition">¶</a></dt>
+<dd><p>Correction term to account for E_h (highest energy level)</p>
+<section id="id8">
+<h2>Parameters:<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h2>
+<dl class="simple">
+<dt>theta_h :int</dt><dd><p>Parameter determined by E_h, where .. math:: sin(frac{theta_neg1 + theta_0 + theta_h}{2} = frac{C}{E_{gs} - E_{h}}</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="perturbation_to_hubbard_model.ControlledRotations.cr_6">
+<span class="sig-name descname"><span class="pre">cr_6</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta_1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#perturbation_to_hubbard_model.ControlledRotations.cr_6" title="Link to this definition">¶</a></dt>
+<dd><p>1st correction term to account for E_1</p>
+<section id="id9">
+<h2>Parameters:<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h2>
+<dl class="simple">
+<dt>theta_1 :int</dt><dd><p>Parameter determined by E_1, where .. math:: sin(frac{theta_1 + theta_0}{2} = frac{C}{E_{gs} - E_1}</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="perturbation_to_hubbard_model.ControlledRotations.cr_7">
+<span class="sig-name descname"><span class="pre">cr_7</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta_1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#perturbation_to_hubbard_model.ControlledRotations.cr_7" title="Link to this definition">¶</a></dt>
+<dd><p>2nd correction term to account for E_1</p>
+<section id="id10">
+<h2>Parameters:<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h2>
+<dl class="simple">
+<dt>theta_1 :int</dt><dd><p>Parameter determined by E_1, where .. math:: sin(frac{theta_1 + theta_0}{2} = frac{C}{E_{gs} - E_1}</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="perturbation_to_hubbard_model.HubbardCircuit">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">perturbation_to_hubbard_model.</span></span><span class="sig-name descname"><span class="pre">HubbardCircuit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">M</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pert_coeff</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transfer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interaction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phase</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_gs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_neg1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e_h</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#perturbation_to_hubbard_model.HubbardCircuit" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class to construct circuit used to estimate 1st order correction to Hubbard model</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="perturbation_to_hubbard_model.HubbardCircuit.hub_circuit">
+<span class="sig-name descname"><span class="pre">hub_circuit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#perturbation_to_hubbard_model.HubbardCircuit.hub_circuit" title="Link to this definition">¶</a></dt>
+<dd><p>Construct Hubbard circuit using gates created in the circuit_modules class</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="perturbation_to_hubbard_model.InitializeCircuit">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">perturbation_to_hubbard_model.</span></span><span class="sig-name descname"><span class="pre">InitializeCircuit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">N</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">M</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#perturbation_to_hubbard_model.InitializeCircuit" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class to create blank circuit with dimensionality N + M + 2.</p>
+<p>N refers to the number of qubits required for a system of size 2^N
+M refers to the number of ancillary qubits required to implement the U_e gate
+The 2 additional qubits are required for readout</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="perturbation_to_hubbard_model.InitializeCircuit.create_device">
+<span class="sig-name descname"><span class="pre">create_device</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#perturbation_to_hubbard_model.InitializeCircuit.create_device" title="Link to this definition">¶</a></dt>
+<dd><p>Create the computational device used for quantum circuit</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="perturbation_to_hubbard_model.InitializeCircuit.initial_state">
+<span class="sig-name descname"><span class="pre">initial_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#perturbation_to_hubbard_model.InitializeCircuit.initial_state" title="Link to this definition">¶</a></dt>
+<dd><p>Set the initial state of system (first N qubits)</p>
+<p>requirements:
+- list should be of length N
+- list should contain objects of only integer values 1 or 0, corresponding to <a href="#id11"><span class="problematic" id="id12">|</span></a>1&gt; or <a href="#id13"><span class="problematic" id="id14">|</span></a>0&gt; state</p>
+</dd></dl>
+
+</dd></dl>
+
 <dl class="field-list simple">
 <dt class="field-odd">members<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
@@ -77,7 +322,15 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">API Reference</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#perturbation_to_hubbard_model.CalculateThetas"><code class="docutils literal notranslate"><span class="pre">CalculateThetas</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#perturbation_to_hubbard_model.CircuitModules"><code class="docutils literal notranslate"><span class="pre">CircuitModules</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#perturbation_to_hubbard_model.ConstructionGates"><code class="docutils literal notranslate"><span class="pre">ConstructionGates</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#perturbation_to_hubbard_model.ControlledRotations"><code class="docutils literal notranslate"><span class="pre">ControlledRotations</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#perturbation_to_hubbard_model.HubbardCircuit"><code class="docutils literal notranslate"><span class="pre">HubbardCircuit</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#perturbation_to_hubbard_model.InitializeCircuit"><code class="docutils literal notranslate"><span class="pre">InitializeCircuit</span></code></a></li>
+</ul>
+</li>
 </ul>
 
 <div class="relations">
