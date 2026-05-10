@@ -24,6 +24,8 @@ API documentation is auto-generated from docstrings using [mkdocstrings](https:/
 
 Docs deploy automatically on push to `main` via GitHub Actions. To enable this, go to your repo's Settings > Pages and set the source to **GitHub Actions**.
 
+The full documentation for this package can be viewed [here](https://perturbation-to-hubbard-model.readthedocs.io/en/latest/index.html).
+
 ## Development
 
 To set up for local development:
