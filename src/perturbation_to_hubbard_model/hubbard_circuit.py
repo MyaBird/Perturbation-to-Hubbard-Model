@@ -62,11 +62,6 @@ class HubbardCircuit:
         
         thetas = CalculateThetas(c, e_gs, e_neg1, e_0, e_1, e_2, e_h)
 
-        #Parameters of circuit
-        self.qubits = self.modules.qubits
-        self.N = N
-        self.M = M
-
         #Parameters of perturbation
         self.pert_coeff = pert_coeff
         self.t = transfer
@@ -75,7 +70,6 @@ class HubbardCircuit:
         #Angles of rotation
         thetas = CalculateThetas(c, e_gs, e_neg1, e_0, e_1, e_2, e_h)
         self.theta = theta
-        self.alpha = self.modules.alpha
         self.phase = phase
         self.theta_gs = thetas.theta_gs
         self.theta_neg1 = thetas.theta_neg1
@@ -89,8 +83,16 @@ class HubbardCircuit:
 
         #Modules for circuit
         self.modules = CircuitModules(N, M, pert_coeff, transfer, interaction, theta, phase, self.theta_gs, self.theta_neg1, self.theta_0, self.theta_1, self.theta_2, self.theta_h)
+        
+        #Parameters of circuit
+        self.qubits = self.modules.qubits
+        self.N = N
+        self.M = M
 
-    def hub_circuit(self):
+        #Rotation angle for disentangling circuit
+        self.alpha = self.modules.alpha
+
+    def build_circuit(self):
         '''Construct Hubbard circuit using gates created in the circuit_modules class
         '''
 
@@ -103,6 +105,10 @@ class HubbardCircuit:
         qml.adjoint(self.modules.u_disentangle)()
         self.modules.u_inverse_energy()
 
+        return qml.expval(qml.PauliZ(wires="q1''"))
+    
+    def read_circuit():
+        '''
         #Check readout qubit for success
         u_e_readout = qml.expval(qml.PauliZ(wires="q2''"))
 
@@ -112,3 +118,5 @@ class HubbardCircuit:
             state_output.append(qml.expval(qml.PauliZ(wires=self.qubits[idx])))
         
         return u_e_readout, state_output
+
+        '''
