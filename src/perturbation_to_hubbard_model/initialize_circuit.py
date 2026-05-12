@@ -59,10 +59,6 @@ class InitializeCircuit:
         
         '''
 
-        #Check that config input matches dimensionality of system qubits
-        if len(config) != self.N:
-            error("initial configuration has wrong dimension")
-
         #Apply Pauli X gate to wire depending if corresponding config index is 1
         for ind, bit in enumerate(config):
             if bit == 1:
