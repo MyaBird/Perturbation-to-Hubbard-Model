@@ -8,7 +8,7 @@ def test_initialize_circuit():
     circuit = perturbation_to_hubbard_model.InitializeCircuit(4,2)
     test_qubits = ["q1", "q2", "q3", "q4", "q1'", "q2'", "q1''", "q2''"]
     #Test that circuit has correct qubit configuration
-    assert((circuit.qubits == test_qubits).all())
+    assert(circuit.qubits == test_qubits)
 
     def circuit_state():
         circuit.initial_state([0,1,0,1])
