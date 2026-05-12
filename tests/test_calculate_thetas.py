@@ -4,7 +4,7 @@ import numpy as np
 
 def test_calculate_thetas():
     
-    thetas = perturbation_to_hubbard_model.calculate_thetas(1,0,1,2,3,4,5)
+    thetas = perturbation_to_hubbard_model.CalculateThetas(1,0,1,2,3,4,5)
 
     assert(np.isclose(thetas.theta_0, -1.047))
     assert(np.isclose(thetas.theta_2, 0.542))
