@@ -4,7 +4,7 @@
 
 The Perturbation to Hubbard Model package constructs a circuit which calculates the first order corrections to the two-electron Hubbard model. The perturbation is constructed based on the addition of dipole-dipole int
 
-* [GitHub](https://github.com/MyaBird/Perturbation-to-Hubbard-Model/) | [PyPI](https://pypi.org/project/Perturbation-to-Hubbard-Model/) | [Documentation](https://MyaBird.github.io/Perturbation-to-Hubbard-Model/)
+* [GitHub](https://github.com/MyaBird/Perturbation-to-Hubbard-Model/) | [PyPI](https://pypi.org/project/Perturbation-to-Hubbard-Model/) | [Documentation](https://perturbation-to-hubbard-model.readthedocs.io/en/latest/index.html)
 * Created by [Mya G. Shekitka](https://audrey.feldroy.com/) | GitHub [@MyaBird](https://github.com/MyaBird) | PyPI [@MyaBird](https://pypi.org/user/MyaBird/)
 * MIT License
 
@@ -16,7 +16,6 @@ The Perturbation to Hubbard Model package constructs a circuit which calculates 
 
 Documentation is built with [Zensical](https://zensical.org/) and deployed to GitHub Pages.
 
-* **Live site:** https://MyaBird.github.io/Perturbation-to-Hubbard-Model/
 * **Preview locally:** `just docs-serve` (serves at http://localhost:8000)
 * **Build:** `just docs-build`
 

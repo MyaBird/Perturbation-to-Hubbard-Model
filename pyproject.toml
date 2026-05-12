@@ -52,7 +52,7 @@ docs = [
 [project.urls]
 bugs = "https://github.com/MyaBird/Perturbation-to-Hubbard-Model/issues"
 changelog = "https://github.com/MyaBird/Perturbation-to-Hubbard-Model/releases"
-documentation = "https://MyaBird.github.io/Perturbation-to-Hubbard-Model/"
+documentation = "https://perturbation-to-hubbard-model.readthedocs.io/en/latest/index.html"
 homepage = "https://github.com/MyaBird/Perturbation-to-Hubbard-Model"
 
 [project.scripts]
