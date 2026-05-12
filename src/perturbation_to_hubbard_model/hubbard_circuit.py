@@ -104,8 +104,6 @@ class HubbardCircuit:
         self.modules.perturbation()
         qml.adjoint(self.modules.u_disentangle)()
         self.modules.u_inverse_energy()
-
-        return qml.expval(qml.PauliZ(wires="q1''"))
     
     def read_circuit():
         '''
