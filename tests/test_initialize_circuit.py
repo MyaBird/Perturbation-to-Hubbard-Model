@@ -1,3 +1,7 @@
+"""
+Unit and regression test for the initialize_circuit module.
+"""
+
 import perturbation_to_hubbard_model
 import numpy as np
 import pytest
@@ -7,7 +11,10 @@ def test_initialize_circuit():
 
     circuit = perturbation_to_hubbard_model.InitializeCircuit(4,2)
     test_qubits = ["q1", "q2", "q3", "q4", "q1'", "q2'", "q1''", "q2''"]
-    #Test that circuit has correct qubit configuration
+
+    '''
+    Test that circuit has correct qubit configuration:
+    '''
     assert(circuit.qubits == test_qubits)
 
     def circuit_state():
@@ -19,5 +26,7 @@ def test_initialize_circuit():
         qml.PauliX(wires='q4')
         return qml.expval(qml.PauliZ("q1"))
 
-    #Test initialize qubit circuit
+    '''
+    Test that initialize qubit circuit yields correct qubit configuration:
+    '''
     assert(qml.equal(circuit_state(), test_config()))
